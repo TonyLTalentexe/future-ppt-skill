@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+dist/
+build/
+*.egg-info/
+projects/
+exports/
+backup/
+previews/
+*.pptx
+*.docx
+*.pdf
+*.key

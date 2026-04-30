@@ -1,0 +1,4 @@
+interface:
+  display_name: "Future PPT"
+  short_description: "成熟文档解构到可编辑发布级PPT的完整标准生产工作流"
+  default_prompt: "Use $future-ppt to turn this mature document into an editable launch-quality PPT."
