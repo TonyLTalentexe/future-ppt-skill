@@ -1,4 +1,4 @@
-# Future PPT Skill / PPT Scale
+# Future PPT Skill
 
 `future-ppt` is a Codex skill for turning mature documents, reports, research notes, and strategy materials into **native editable PowerPoint decks**.
 
@@ -9,6 +9,7 @@ It is designed as a small PPT production system: first align the audience and de
 This iteration upgrades the original open-source skill from a basic document-to-slides workflow into a stronger presentation workflow:
 
 - needs alignment before production
+- rapid sample mode for quick 1-3 page direction previews
 - claim / evidence / implication narrative compiler
 - style archetype playbooks, including consulting, launch, IC, government, technical, operating review, and talent/research decks
 - visual-form router
@@ -84,6 +85,11 @@ Position it as an investor/IC memo deck. Start with needs alignment and keep ris
 ```
 
 ```text
+用 future-ppt 基于这个行业研究文档快速做 2-3 页 PPT 小样。
+定位是行业研报，信息量要足，先让我看方向和效果。
+```
+
+```text
 用 future-ppt 把这个成熟文档做成一份可编辑 PPT。
 定位是行业研报，信息量要足，但要有视觉结构感。
 先做需求对齐、claim/evidence/implication，再生成页面。
@@ -111,6 +117,8 @@ Serious runs should produce:
 - `visual_lint.json`
 - `qa_report.md`
 - `exports/*.pptx`
+
+Rapid sample runs may produce compact versions of the same planning artifacts and 1-3 finished slides. See `references/rapid-sample-mode.md`.
 
 ## QA Helpers
 
@@ -141,6 +149,7 @@ future-ppt-skill/
 ├── references/
 │   ├── needs-alignment-and-style-archetypes.md
 │   ├── narrative-compiler.md
+│   ├── rapid-sample-mode.md
 │   ├── style-archetype-playbooks.md
 │   ├── visual-form-router.md
 │   ├── page-component-library.md

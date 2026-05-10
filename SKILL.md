@@ -44,6 +44,8 @@ Important: do not let the default style collapse into a deck of rigid logic diag
 
 Read `references/needs-alignment-and-style-archetypes.md` at the start of serious PPT tasks.
 
+If the user asks for a quick 1-3 page sample, style test, direction preview, or "先做几页看看效果", also read `references/rapid-sample-mode.md` and use Rapid Sample Mode. Rapid samples may use compact planning artifacts, but still need needs assumptions, claim/evidence/implication, visual routing, rendered preview, visual lint, and native PPTX export.
+
 Before making pages, identify the audience, decision/action needed, use context, desired style archetype, content boundaries, and forbidden material. Create `needs_alignment_brief.md` before `slide_brief_matrix.md`.
 
 Ask up to three concise questions when the missing answers would materially change the deck. Prioritize:
