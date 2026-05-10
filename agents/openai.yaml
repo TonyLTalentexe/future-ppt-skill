@@ -1,4 +1,4 @@
 interface:
   display_name: "Future PPT"
-  short_description: "成熟文档解构到可编辑发布级PPT的完整标准生产工作流"
-  default_prompt: "Use $future-ppt to turn this mature document into an editable launch-quality PPT."
+  short_description: "成熟文档到可编辑PPT，含需求对齐、叙事编译、组件路由、Image2资产和自动QA"
+  default_prompt: "Use $future-ppt to turn this mature document into an editable launch-quality PPT. First align audience, purpose, decision/action, content boundaries, and style archetype; compile claim/evidence/implication; then build a slide brief matrix with visual-form routing and page components, a visual evidence plan, design contract, and QA report. When design quality matters, run the agency micro-pipeline with narrative, brand, design-system, cinematic/generated/source asset prompts, image-first information-priority derivatives, evidence, visual lint, and reality-check passes."
