@@ -1,9 +1,9 @@
 # Slide Brief Matrix Example
 
-| Page | Page Type | Page Job | Core Message | Info Load | Visual Form | Why This Visual | Source Content |
-|---|---|---|---|---|---|---|---|
-| P01 | cover | Establish topic and tone | The deck evaluates product talent by potential, not resume | light | black launch cover + neon orbit | Creates a memorable system metaphor | Title and thesis |
-| P02 | problem | Reject weak signals | Past products, team size, and results are insufficient | light | giant statement + strike lines | One clear launch-style claim | Opening argument |
-| P03 | model | Introduce the framework | L, C, A, and Ego form the minimum model | medium | hub-spoke model | Four variables orbit one subject | Framework section |
-| P04 | analysis | Explain decision height | L asks which altitude a person can judge from | medium | maturity ladder | Levels are naturally hierarchical | L section |
-| P05 | conclusion | Define investability | Invest people who can define complex systems | medium | threshold ladder | A decision threshold is best shown as a ladder | VC section |
+| page_id | page_type | page_job | target_read | source_claim | core_message | information_load | visual_form | selected_component | why_this_visual | visual_evidence_asset | source_content |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| P01 | thesis | Establish the investment question | live claim | The category should be reframed around the user's real job-to-be-done | The opportunity is not the visible gadget, but the system that makes the job easier | light | claim hero + proof chips | Claim Hero + Native Proof | A strong thesis needs one memorable read plus a few proof anchors | native shapes; optional sourced/product image | executive summary |
+| P02 | market | Rebuild the market map | leave-behind proof | The addressable market should be calculated from substitute behavior, not category labels | The real market bottom-up comes from substitute products and usage frequency | dense | three-segment comparison + activation threshold | Assertion + Exhibit | Market logic requires comparison and a threshold, not a decorative TAM circle | native table/chart | market sizing section |
+| P03 | route | Explain the sequence of entry points | leave-behind proof | The wedge should start where adoption friction is lowest | Start narrow, prove repeat use, then platformize | medium | stage roadmap | Roadmap / Stage Gate | A route is sequential and should show gates and proof milestones | native roadmap | product strategy section |
+| P04 | risk | Make diligence risks visible | leave-behind proof | The biggest risk is reliability and distribution, not only technical feasibility | A plausible product still fails if service, insurance, and compliance do not work | dense | risk matrix | Risk Matrix | Investment decisions need downside visibility and mitigation | native table | risk section |
+| P05 | decision | Close with the recommended next action | live claim | The next step is a targeted validation sprint, not a broad search | Approve a focused diligence plan before committing to company sourcing | medium | decision board | Recommendation / Decision Board | A closing page should state the ask, reasons, risks, and next action | native board | conclusion |

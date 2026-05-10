@@ -1,99 +1,143 @@
 # Future PPT Skill
 
-`future-ppt` is a Codex skill for turning mature documents into **native editable PowerPoint decks** through a production workflow:
+`future-ppt` is a Codex skill for turning mature documents, reports, research notes, and strategy materials into **native editable PowerPoint decks**.
+
+It is designed as a small PPT production system: first align the audience and decision context, then compile the narrative, route each page to the right visual form, generate SVG pages, lint the deck, and export a native PPTX through [`ppt-master`](https://github.com/hugohe3/ppt-master).
+
+## What Is New In This Version
+
+This iteration upgrades the original open-source skill from a basic document-to-slides workflow into a stronger presentation workflow:
+
+- needs alignment before production
+- rapid sample mode for quick 1-3 page direction previews
+- claim / evidence / implication narrative compiler
+- style archetype playbooks, including consulting, launch, IC, government, technical, operating review, and talent/research decks
+- visual-form router
+- reusable page component library
+- image-first workflow for generated image assets without sacrificing information hierarchy
+- automated visual lint script for SVG decks
+- stronger QA rubric for editability, rhythm, layering, and generated assets
+
+## Production Flow
 
 ```text
-source document
--> document deconstruction
--> slide brief matrix
+needs alignment
+-> source import
+-> narrative compiler
+-> slide brief matrix + visual router
+-> art direction + component plan
+-> visual evidence plan
 -> design contract
+-> optional Figma / Canva / generated-image assist
 -> page SVGs
--> QA
+-> automated visual lint + QA
 -> native PPTX export
 ```
 
-It is designed to cooperate with [ppt-master](https://github.com/hugohe3/ppt-master): the agent owns content decomposition, style control, page briefs, and QA; `ppt-master` handles SVG validation, post-processing, and native PPTX export.
-
 ## What This Skill Optimizes For
 
-- Editable PPTX, not whole-slide screenshots
-- Slide-level information architecture before design
-- Prompt-driven or reference-PPT-driven style control
-- Explicit visual-form selection per page
-- QA across information design, aesthetics, layout, and export safety
+- Native editable PPTX, not whole-slide screenshots
+- Decision-oriented narrative, not document slicing
+- Page-level claim / evidence / implication
+- Explicit visual-form and component selection per page
+- Stronger design language through archetypes and reusable components
+- Generated images as atmosphere or metaphor, never factual evidence
+- Visual QA before handoff
 
-## Environment Compatibility
+## Requirements
 
 | Layer | Requirement | Notes |
 |---|---|---|
-| Agent runtime | Codex with local skills, file I/O, and shell access | Tested as a Codex Desktop local skill |
-| OS | macOS or Linux recommended | Windows should work if `ppt-master` and Python deps are configured |
-| Python | 3.10+ | Used by `ppt-master` and helper scripts |
-| PPT engine | `ppt-master` | Recommended v2.4.0+ |
-| Render preview | `rsvg-convert` optional | Used to create PNG previews/montages from SVG |
-| DOCX fallback | `python-docx` optional | Useful when `ppt-master` DOCX conversion lacks `mammoth` |
-| Image generation | optional | Use Codex image generation or `ppt-master` image backends for atmosphere/background assets only |
+| Agent runtime | Codex with local skills, file I/O, and shell access | Built for Codex Desktop/local skill use |
+| PPT engine | `ppt-master` | Recommended: latest main or v2.4.0+ |
+| Python | 3.10+ | Used by helper scripts and `ppt-master` |
+| Render preview | `rsvg-convert` optional | Useful for PNG previews/montages |
+| Image generation | optional | Use host image generation or configured `ppt-master` backends |
 
-The workflow was tested with:
+Set `PPT_MASTER_HOME` if your `ppt-master` checkout is not at `$HOME/tools/ppt-master`:
 
-- macOS
-- Codex Desktop
-- Python 3.14 system runtime for simple scripts
-- `ppt-master` main branch around v2.4.0
-- `rsvg-convert`
+```bash
+export PPT_MASTER_HOME="$HOME/tools/ppt-master"
+```
 
 ## Install
 
-Clone this repository into your Codex skills directory:
+Clone into your Codex skills directory:
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-git clone https://github.com/<your-org-or-user>/future-ppt-skill.git \
+git clone https://github.com/TonyLTalentexe/future-ppt-skill.git \
   "${CODEX_HOME:-$HOME/.codex}/skills/future-ppt"
 ```
 
-Install or clone `ppt-master`:
+Install `ppt-master`:
 
 ```bash
 mkdir -p "$HOME/tools"
 git clone https://github.com/hugohe3/ppt-master "$HOME/tools/ppt-master"
 ```
 
-Optionally set:
-
-```bash
-export PPT_MASTER_HOME="$HOME/tools/ppt-master"
-```
-
-## Usage
-
-Example prompt:
+## Example Prompts
 
 ```text
-Use $future-ppt to turn this mature document into an editable launch-quality PPT.
-Use the attached reference PPT for style extraction. Keep the output native editable.
+Use $future-ppt to turn this mature industry report into a 10-page editable PPT.
+Position it as an investor/IC memo deck. Start with needs alignment and keep risks visible.
 ```
 
-Chinese prompt example:
+```text
+用 future-ppt 基于这个行业研究文档快速做 2-3 页 PPT 小样。
+定位是行业研报，信息量要足，先让我看方向和效果。
+```
 
 ```text
 用 future-ppt 把这个成熟文档做成一份可编辑 PPT。
-先做页面分镜表，再按“纯黑底、白色粗体、霓虹 CMYG 点缀”的发布会风格生成。
+定位是行业研报，信息量要足，但要有视觉结构感。
+先做需求对齐、claim/evidence/implication，再生成页面。
 ```
 
-## Workflow Artifacts
+```text
+Use $future-ppt to make this technical report into a launch-style deck.
+Use generated images only as conceptual backgrounds; keep all facts, charts, and labels native.
+```
 
-Every serious run should produce:
+## Expected Artifacts
 
+Serious runs should produce:
+
+- `needs_alignment_brief.md`
+- `claim_evidence_implication.md`
 - `slide_brief_matrix.md`
+- `visual_evidence_plan.md`
 - `design_contract.md`
-- `design_spec.md`
 - `spec_lock.md`
+- `asset_prompt_pack.md` when generated/source imagery is used
 - `svg_output/`
 - `svg_final/`
-- `exports/*.pptx`
-- `previews/montage.png`
+- `preview_montage.png`
+- `visual_lint.json`
 - `qa_report.md`
+- `exports/*.pptx`
+
+Rapid sample runs may produce compact versions of the same planning artifacts and 1-3 finished slides. See `references/rapid-sample-mode.md`.
+
+## QA Helpers
+
+Check whether the exported deck has editable text:
+
+```bash
+python3 scripts/check_pptx_native.py path/to/deck.pptx
+```
+
+Run best-effort visual lint on a `ppt-master` project:
+
+```bash
+python3 scripts/deck_visual_lint.py path/to/project \
+  --svg-dir path/to/project/svg_final \
+  --preview-dir path/to/project/preview_png \
+  --json-out path/to/project/visual_lint.json
+```
+
+`deck_visual_lint.py` checks for common risks such as image-only slides, tiny text, likely text overlap, over-bright/busy previews, repeated card-grid patterns, and low type hierarchy. It is a review aid, not a replacement for human montage inspection.
 
 ## Repository Layout
 
@@ -101,17 +145,27 @@ Every serious run should produce:
 future-ppt-skill/
 ├── SKILL.md
 ├── agents/openai.yaml
+├── examples/
 ├── references/
-│   ├── design-contracts.md
-│   ├── qa-rubric.md
-│   └── slide-brief-matrix.md
+│   ├── needs-alignment-and-style-archetypes.md
+│   ├── narrative-compiler.md
+│   ├── rapid-sample-mode.md
+│   ├── style-archetype-playbooks.md
+│   ├── visual-form-router.md
+│   ├── page-component-library.md
+│   ├── image-first-deck-workflow.md
+│   ├── automated-visual-qa.md
+│   └── ...
 └── scripts/
-    └── check_pptx_native.py
+    ├── check_pptx_native.py
+    └── deck_visual_lint.py
 ```
 
-## Design Philosophy
+## Open-Source Boundary
 
-Do not design slides directly from raw documents. First define each page's job, information load, and visual form. Once every page is a clear production unit, decks can scale from 5 pages to 50 pages while staying coherent under a shared design contract.
+This repository contains the reusable skill workflow and helper scripts. It intentionally does not include private source documents, generated client decks, internal research artifacts, or licensed presentation templates.
+
+Use mature templates as references for composition logic, chart/table grammar, density, and pacing. Do not copy proprietary slide masters, brand marks, watermarks, or exact layouts without permission.
 
 ## License
 
